@@ -25,7 +25,12 @@ public class Products extends Controller {
     }
 
     public static Result details(String ean) {
-        return TODO;
+        final Product product = Product.findByEan(ean);
+        if (product == null) {
+            return notFound(String.format("Product %s does not exist.", ean));
+        }
+        Form<Product> filledForm = productForm.fill(product);
+        return ok(views.html.products.details.render(filledForm));
     }
 
     public static Result save() {
