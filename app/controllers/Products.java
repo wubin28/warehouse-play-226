@@ -7,19 +7,19 @@ import play.mvc.Result;
  * Created by twer on 9/3/15.
  */
 public class Products extends Controller {
-    public Result list() {
+    public static Result list() {
         return TODO;
     }
 
-    public Result newProduct() {
+    public static Result newProduct() {
         return TODO;
     }
 
-    public Result details(String ean) {
+    public static Result details(String ean) {
         return TODO;
     }
 
-    public Result save() {
+    public static Result save() {
         return TODO;
     }
 }
