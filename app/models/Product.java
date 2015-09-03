@@ -31,7 +31,7 @@ public class Product {
         this.description = description;
     }
 
-    public List<Product> findAll() {
+    public static List<Product> findAll() {
         return new ArrayList<>(products);
     }
 
