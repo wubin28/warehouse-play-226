@@ -58,7 +58,7 @@ public class Product {
         return products.remove(product);
     }
 
-    public static void save() {
+    public void save() {
         products.remove(findByEan(this.ean));
         products.add(this);
     }
