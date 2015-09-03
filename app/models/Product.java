@@ -35,7 +35,7 @@ public class Product {
         return new ArrayList<>(products);
     }
 
-    public Product findByEan(String ean) {
+    public static Product findByEan(String ean) {
         for (Product candidate : products) {
             if (candidate.ean.equals(ean)) {
                 return candidate;
@@ -44,7 +44,7 @@ public class Product {
         return null;
     }
 
-    public List<Product> findByName(String term) {
+    public static List<Product> findByName(String term) {
         final List<Product> results = new ArrayList<>();
         for (Product candidate : products) {
             if (candidate.name.toLowerCase().contains(term.toLowerCase())) {
@@ -54,11 +54,11 @@ public class Product {
         return results;
     }
 
-    public boolean remove(Product product) {
+    public static boolean remove(Product product) {
         return products.remove(product);
     }
 
-    public void save() {
+    public static void save() {
         products.remove(findByEan(this.ean));
         products.add(this);
     }
