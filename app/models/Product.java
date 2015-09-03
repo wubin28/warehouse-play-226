@@ -31,6 +31,38 @@ public class Product {
         this.description = description;
     }
 
+    public List<Product> findAll() {
+        return new ArrayList<>(products);
+    }
+
+    public Product findByEan(String ean) {
+        for (Product candidate : products) {
+            if (candidate.ean.equals(ean)) {
+                return candidate;
+            }
+        }
+        return null;
+    }
+
+    public List<Product> findByName(String term) {
+        final List<Product> results = new ArrayList<>();
+        for (Product candidate : products) {
+            if (candidate.name.toLowerCase().contains(term.toLowerCase())) {
+                results.add(candidate);
+            }
+        }
+        return results;
+    }
+
+    public boolean remove(Product product) {
+        return products.remove(product);
+    }
+
+    public void save() {
+        products.remove(findByEan(this.ean));
+        products.add(this);
+    }
+
     @Override
     public String toString() {
         return "Product{" +
