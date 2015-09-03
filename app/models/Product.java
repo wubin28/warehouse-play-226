@@ -1,5 +1,7 @@
 package models;
 
+import play.data.validation.Constraints;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,9 @@ import java.util.List;
  * Created by twer on 9/3/15.
  */
 public class Product {
+    @Constraints.Required
     public String ean;
+    @Constraints.Required
     public String name;
     public String description;
 
