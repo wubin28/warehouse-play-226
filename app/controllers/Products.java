@@ -30,8 +30,13 @@ public class Products extends Controller {
 
     public static Result save() {
         Form<Product> boundForm = productForm.bindFromRequest();
+        if(boundForm.hasErrors()) {
+            flash("error", "Please correct the form below.");
+            return badRequest(views.html.products.details.render(boundForm));
+        }
         Product product = boundForm.get();
         product.save();
-        return ok(String.format("Saved product %s", product));
-    }
+        flash("success",
+                String.format("Successfully added product %s", product));
+        return redirect(routes.Products.list());    }
 }
